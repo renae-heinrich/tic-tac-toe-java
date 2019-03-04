@@ -29,11 +29,11 @@ public class Board {
     public String showBoard() {
         StringBuilder sb = new StringBuilder();
 
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                Character c = character.get(j).get(i);
+        for (int row = 0; row < 3; row++) {
+            for (int column = 0; column < 3; column++) {
+                Character c = character.get(column).get(row);
                 sb.append(c);               
-                if(j == 2){
+                if(column == 2){
                     sb.append('\n');
                 } else sb.append(' ');
             }
