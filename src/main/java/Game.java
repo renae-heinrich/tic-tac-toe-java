@@ -18,7 +18,7 @@ public class Game {
     // need to affect original board and when showBoard is called, it will display the new changes
     public void takeTurn(int x, int y){
 
-        character.get(x).set((y), 'X');
+        character.get(x - 1).set((y - 1), 'X');
 
 
     }
