@@ -46,7 +46,7 @@ public class Board {
     public void setPosition(int x, int y) {
         if(character.get(x -1).get(y -1).equals('.')) {
             character.get(x - 1).set((y - 1), 'X');
-        }
+        } else{System.out.println("Already used");}
 
     }
 
