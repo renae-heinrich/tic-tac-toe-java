@@ -5,6 +5,7 @@ import java.util.List;
 public class Board {
 
     private final List<List<Character>> character;
+//    private static boolean inPlay = true;
 
     public Board() {
 
@@ -32,7 +33,7 @@ public class Board {
             for (int column = 0; column < 3; column++) {
                 Character c = character.get(column).get(row);
                 sb.append(c);
-                if(column == 2 && row ==2){
+                if(column == 2 && row == 2){
                     break;
                 } else if(column == 2){
                     sb.append('\n');
@@ -44,14 +45,27 @@ public class Board {
     }
 
     public void setPosition(int x, int y) {
-        int row = x -1;
+
+        int row = x - 1;
         int col = y - 1;
 
-        if(character.get(row).get(col).equals('.')) {
-            character.get(row).set((col), 'X');
-        } else{System.out.println("Oh no, a piece is already at this place! Try again...");}
+            if (character.get(col).get(row).equals('.')) {
+                int turnCount = 0;
+                if(turnCount % 2 == 0 ){
+                    character.get(col).set((row), 'X');
+                    turnCount++;
+                } else {
+                    character.get(col).set((row), 'O');
+                    turnCount++;
+                }
+            } else {
+                System.out.println("Oh no, a piece is already at this place! Try again...");
+            }
+
 
     }
+
+    //need to implement turnCounter so X changes to O when turnCount is odd
 
 
 
