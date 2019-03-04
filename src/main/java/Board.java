@@ -31,21 +31,23 @@ public class Board {
         for (int row = 0; row < 3; row++) {
             for (int column = 0; column < 3; column++) {
                 Character c = character.get(column).get(row);
-                sb.append(c);               
-                if(column == 2){
+                sb.append(c);
+                if(column == 2 && row ==2){
+                    break;
+                } else if(column == 2){
                     sb.append('\n');
                 } else sb.append(' ');
             }
         }
         
-        return sb.substring(0, sb.length() -1);
+        return sb.toString();
     }
 
-    public String setPosition(int x, int y) {
-        x = 1;
-        y = 1;
+    public void setPosition(int x, int y) {
+
         character.get(x - 1).set((y - 1), 'X');
-        return showBoard();
+
+
     }
 
     //public method to allow game to set new position of X or O
