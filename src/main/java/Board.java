@@ -44,9 +44,12 @@ public class Board {
     }
 
     public void setPosition(int x, int y) {
-        if(character.get(x -1).get(y -1).equals('.')) {
-            character.get(x - 1).set((y - 1), 'X');
-        } else{System.out.println("Already used");}
+        int row = x -1;
+        int col = y - 1;
+
+        if(character.get(row).get(col).equals('.')) {
+            character.get(row).set((col), 'X');
+        } else{System.out.println("Oh no, a piece is already at this place! Try again...");}
 
     }
 
