@@ -41,6 +41,13 @@ public class Board {
         return sb.substring(0, sb.length() -1);
     }
 
+    public String setPosition(int x, int y) {
+        x = 1;
+        y = 1;
+        character.get(x - 1).set((y - 1), 'X');
+        return showBoard();
+    }
+
     //public method to allow game to set new position of X or O
 
     // getting position from game.takeTurn(1, 1)
