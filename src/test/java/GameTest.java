@@ -1,4 +1,5 @@
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -50,7 +51,7 @@ public class GameTest {
     @Test
     public void whenPlayerGetsThreeInARowHorizontallyPlayerWins() {
         Game game = new Game();
-        game.takeTurn(1,1);
+        game.takeTurn(1, 1);
         game.takeTurn(1,2);
         game.takeTurn(1,3);
         Board board = game.getBoard();
@@ -111,7 +112,7 @@ public class GameTest {
         Board board = game.getBoard();
         String result = board.showBoard();
 
-        Assert.assertEquals("X X X\nX X X\nX X X", result);
+        Assert.assertEquals("X 0 X\n0 X 0\n0 X X", result);
     }
 
 }

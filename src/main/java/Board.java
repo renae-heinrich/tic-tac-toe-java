@@ -44,25 +44,16 @@ public class Board {
         return sb.toString();
     }
 
-    public void setPosition(int x, int y) {
-
+    public void setPosition(int x, int y, char playerToken) {
         int row = x - 1;
         int col = y - 1;
 
             if (character.get(col).get(row).equals('.')) {
-                int turnCount = 0;
-                if(turnCount % 2 == 0 ){
-                    character.get(col).set((row), 'X');
-                    turnCount++;
-                } else {
-                    character.get(col).set((row), 'O');
-                    turnCount++;
-                }
-            } else {
+                character.get(col).set((row), playerToken);
+            }
+             else {
                 System.out.println("Oh no, a piece is already at this place! Try again...");
             }
-
-
     }
 
     //need to implement turnCounter so X changes to O when turnCount is odd

@@ -12,7 +12,22 @@ public class Game {
 
 
     public void takeTurn(int x, int y){
-        board.setPosition(x,y);
+
+        int turnCount = 0;
+
+        while(turnCount < 9) {
+            if (turnCount % 2 == 0) {
+                char playerToken = 'X';
+                board.setPosition(x, y, playerToken);
+                turnCount++;
+            } else {
+                char playerToken = 'O';
+                board.setPosition(x, y, playerToken);
+                turnCount++;
+            }
+        }
+
+
 
     }
 
