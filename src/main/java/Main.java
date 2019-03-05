@@ -18,24 +18,25 @@ public class Main {
             do {
                 System.out.print("enter a coord x,y to place your O or enter 'q' to give up: ");
                 String userInput  = scanner.next();
-                String[] userToken = userInput.split(",");
-                // if userToken array length is one, assuming user is typing q
-                if(userToken.length == 1){
-                    for(String input : userToken){
-                        // checking if input is q, if its not: need to prompt them to start again
-                        if(input.equalsIgnoreCase("q")){
-                            System.out.println("Give up!");
-                            break;
-
-                        } else {break;}
-                    }
-                }else {
-                    for(String input : userToken){
-                        int x = Integer.parseInt(input.valueOf(0));
-                        int y = Integer.parseInt(input.valueOf(1));
-                        //make sure input[i] is a number between 1, 3 and assign to x and y respectively
-                    } return x, y;
+                if(userInput.equalsIgnoreCase("q")){
+                    System.out.println("Player " + (playerOneTurn ? "1" : "2") + " gives up. Player " + (!playerOneTurn ? "1" : "2") + " wins!");
+                    game.playerWins();
+                    game.hasEnded();
                 }
+
+                // if String equals q ignore case, "Player whatever wins, inPlay = false;
+                // split string, if length is 1, and doesnt equal q, prompt user to enter valid input
+                // otherwise, split the two strings and parse them as integers.
+                // need to do a for loop and make the x the value of the first string, and y the value of the second string
+
+                String[] userToken = userInput.split(",");
+
+
+
+                int x = Integer.parseInt(userToken[0]);
+                int y = Integer.parseInt(userToken[1]);
+                // if userToken array length is one, assuming user is typing q
+
                 //need to return the values of x y but says dont have return type
 
                 turnPlayed = game.takeTurn(x, y, token);
