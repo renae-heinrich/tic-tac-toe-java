@@ -44,19 +44,33 @@ public class Board {
         return sb.toString();
     }
 
-    public void setPosition(int x, int y, char playerToken) {
-        int row = x - 1;
-        int col = y - 1;
+    public boolean setPosition(int x, int y, char playerToken) {
+        int row = y - 1;
+        int col = x - 1;
 
-            if (character.get(col).get(row).equals('.')) {
-                character.get(col).set((row), playerToken);
-            }
-             else {
-                System.out.println("Oh no, a piece is already at this place! Try again...");
-            }
+        if (character.get(row).get(col).equals('.')) {
+            // do I want to do this action here, then return true?? or just return true?
+            character.get(row).set(col, playerToken);
+            return true;
+        } else {
+            return false;
+        }
     }
 
-    //need to implement turnCounter so X changes to O when turnCount is odd
+    public boolean inPlay() {
+        for (int row = 0; row < 3; row++) {
+            for (int column = 0; column < 3; column++) {
+                if (character.get(column).get(row).equals('.')) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public boolean playerWins() {
+        return false;
+    }
 
 
 
