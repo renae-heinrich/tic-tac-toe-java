@@ -69,8 +69,21 @@ public class Board {
     }
 
     public boolean playerWins() {
+        if(checkHorizontally()){
+            return true;
+        }
+
         return false;
     }
+
+    public boolean checkHorizontally(){
+        if(character.get(0).get(0).equals('X') && character.get(0).get(1).equals('X') && character.get(0).get(2).equals('X') || character.get(0).get(0).equals('O') && character.get(0).get(1).equals('O') && character.get(0).get(2).equals('O')){
+            return true;
+        }
+        return false;
+    }
+
+
 
 
 
