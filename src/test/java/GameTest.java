@@ -112,7 +112,7 @@ public class GameTest {
         Board board = game.getBoard();
         String result = board.showBoard();
 
-        Assert.assertEquals("X 0 X\n0 X 0\n0 X X", result);
+        Assert.assertEquals("X X X\nX X X\nX X X", result);
     }
 
 }

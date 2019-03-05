@@ -4,31 +4,24 @@ public class Game {
 
     public Game(){
         board = new Board();
+    }
 
-    };
     public Board getBoard(){
         return board;
     }
 
-
+    // need while loop out of the take turn method, so different values can be given
     public void takeTurn(int x, int y){
-
         int turnCount = 0;
-
-        while(turnCount < 9) {
-            if (turnCount % 2 == 0) {
-                char playerToken = 'X';
-                board.setPosition(x, y, playerToken);
-                turnCount++;
-            } else {
-                char playerToken = 'O';
-                board.setPosition(x, y, playerToken);
-                turnCount++;
-            }
+        if (turnCount % 2 == 0) {
+            char playerToken = 'X';
+            board.setPosition(x, y, playerToken);
+            turnCount++;
+        } else {
+            char playerToken = 'O';
+            board.setPosition(x, y, playerToken);
+            turnCount++;
         }
-
-
-
     }
 
 }
