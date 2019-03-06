@@ -2,8 +2,15 @@ public class Game {
 
     private final Board board;
 
+    private boolean playerForfeitedGame;
+
+
     public Game(){
         board = new Board();
+        playerForfeitedGame = false;
+    }
+    public void setPlayerForfeitedGame(boolean playerForfeitedGame) {
+        this.playerForfeitedGame = playerForfeitedGame;
     }
 
     public Board getBoard(){
@@ -15,11 +22,13 @@ public class Game {
     }
 
     public boolean hasEnded() {
-        return !board.inPlay() && !board.playerWins();
+
+        return !board.inPlay() || board.playerWins() || playerForfeitedGame;
     }
 
     public boolean playerWins() {
-        return board.playerWins();
+
+        return board.playerWins() || playerForfeitedGame;
     }
 
     public String showBoard() {

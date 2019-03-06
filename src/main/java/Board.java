@@ -69,7 +69,7 @@ public class Board {
     }
 
     public boolean playerWins() {
-       if(checkHorizontally() || checkVertically() || checkDiagonallyBottomLeftToTopRight() || checkDiagonallyBottomRightTopLeft()){
+       if(checkWin()){
            return true;
        }
 
@@ -77,42 +77,33 @@ public class Board {
 
     }
 
-    public boolean checkHorizontally() {
+    // TODO: try to write this in a cleaner way
 
-        if (character.get(0).get(0).equals('X') && character.get(0).get(1).equals('X') && character.get(0).get(2).equals('X') || character.get(0).get(0).equals('O') && character.get(0).get(1).equals('O') && character.get(0).get(2).equals('O')) {
-            return true;
-        } else if (character.get(1).get(0).equals('X') && character.get(1).get(1).equals('X') && character.get(1).get(2).equals('X') || character.get(1).get(0).equals('O') && character.get(1).get(1).equals('O') && character.get(1).get(2).equals('O')) {
-            return true;
-        } else if (character.get(2).get(0).equals('X') && character.get(2).get(1).equals('X') && character.get(2).get(2).equals('X') || character.get(2).get(0).equals('O') && character.get(2).get(1).equals('O') && character.get(2).get(2).equals('O')){
-            return true;
-        }
+    //private method for call playing square
 
-        return false;
-    }
 
-    public boolean checkVertically() {
-        if (character.get(0).get(0).equals('X') && character.get(1).get(0).equals('X') && character.get(2).get(0).equals('X') || character.get(0).get(0).equals('O') && character.get(1).get(0).equals('O') && character.get(2).get(0).equals('O')) {
-            return true;
-        }else if(character.get(0).get(1).equals('X') && character.get(1).get(1).equals('X') && character.get(2).get(1).equals('X') || character.get(0).get(1).equals('O') && character.get(1).get(1).equals('O') && character.get(2).get(1).equals('O') ) {
-            return true;
-        }else if (character.get(0).get(2).equals('X') && character.get(1).get(2).equals('X') && character.get(2).get(2).equals('X') || character.get(0).get(2).equals('O') && character.get(1).get(2).equals('O') && character.get(2).get(2).equals('O')){
+    private boolean callPlayingSquare(char playerToken){
+        if((character.get(0).get(0).equals(playerToken) && character.get(0).get(1).equals(playerToken) && character.get(0).get(2).equals(playerToken))
+                || (character.get(1).get(0).equals(playerToken) && character.get(1).get(1).equals(playerToken) && character.get(1).get(2).equals(playerToken))
+                || (character.get(2).get(0).equals(playerToken) && character.get(2).get(1).equals(playerToken) && character.get(2).get(2).equals(playerToken))
+                || (character.get(0).get(0).equals(playerToken) && character.get(1).get(0).equals(playerToken) && character.get(2).get(0).equals(playerToken))
+                || (character.get(0).get(1).equals(playerToken) && character.get(1).get(1).equals(playerToken) && character.get(2).get(1).equals(playerToken))
+                || (character.get(0).get(2).equals(playerToken) && character.get(1).get(2).equals(playerToken) && character.get(2).get(2).equals(playerToken))
+                || (character.get(2).get(0).equals(playerToken) && character.get(1).get(1).equals(playerToken) && character.get(0).get(2).equals(playerToken))
+                || (character.get(2).get(2).equals(playerToken) && character.get(1).get(1).equals(playerToken) && character.get(0).get(0).equals(playerToken)))
+        {
             return true;
         }
         return false;
     }
 
-    public boolean checkDiagonallyBottomLeftToTopRight(){
-        if (character.get(2).get(0).equals('X') && character.get(1).get(1).equals('X') && character.get(0).get(2).equals('X') || character.get(2).get(0).equals('O') && character.get(1).get(1).equals('O') && character.get(0).get(2).equals('O')){
+    //use that on checkHorizontally etc
+    private boolean checkWin() {
+        if(callPlayingSquare('X') || callPlayingSquare('O')){
             return true;
-        }
-        return false;
+        } return false;
     }
-     public boolean checkDiagonallyBottomRightTopLeft(){
-        if(character.get(2).get(2).equals('X') && character.get(1).get(1).equals('X') && character.get(0).get(0).equals('X') || character.get(2).get(2).equals('O') && character.get(1).get(1).equals('O') && character.get(0).get(0).equals('O')){
-            return true;
-        }
-        return false;
-     }
+
 
 
 

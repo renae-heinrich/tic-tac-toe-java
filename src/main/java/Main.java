@@ -1,4 +1,3 @@
-import java.awt.*;
 import java.util.Scanner;
 
 public class Main {
@@ -9,29 +8,27 @@ public class Main {
         boolean playerOneTurn = true;
         Character playerOneToken = 'X';
         Character playerTwoToken = 'O';
-        while (true) {
-            if (game.hasEnded()) {
-                break;
-            }
+        while (!game.hasEnded()) {
             Character token = playerOneTurn ? playerOneToken : playerTwoToken;
-            boolean turnPlayed;
+            boolean turnPlayed = false;
             do {
                 System.out.println("Enter a coordinate x,y to place your " + (playerOneTurn ? "X" : "O" ) + " or enter 'q' to give up: ");
                 String userInput  = scanner.next();
                 if(userInput.equalsIgnoreCase("q")){
-                    game.playerWins();
-                    game.hasEnded();
-                    System.out.println("Player " + (playerOneTurn ? "1" : "2") + " gives up. Player " + (!playerOneTurn ? "1" : "2") + " wins!");
+                    game.setPlayerForfeitedGame(true);
+                    System.out.println("Player " + (playerOneTurn ? "1" : "2") + " gives up.");
                     break;
                 }
 
                 String[] userToken = userInput.split(",");
 
-
+                // TODO: input validation
+                if (userToken.length != 2) {
+                    continue;
+                }
 
                 int x = Integer.parseInt(userToken[0]);
                 int y = Integer.parseInt(userToken[1]);
-
 
                 turnPlayed = game.takeTurn(x, y, token);
                 if (!turnPlayed) {
@@ -42,7 +39,7 @@ public class Main {
             playerOneTurn = !playerOneTurn;
         }
         if (game.playerWins()) {
-            System.out.println("Player " + (playerOneTurn ? "1" : "2") + " wins");
+            System.out.println("Player " + (!playerOneTurn ? "1" : "2") + " wins!");
         } else {
             System.out.println("Game ended in draw");
         }
