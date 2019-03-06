@@ -28,7 +28,6 @@ public class Main {
 
                 String[] userToken = userInput.split(",");
 
-                // TODO: input validation
                 int x = 0;
                 int y = 0;
                 for(String input : userToken){

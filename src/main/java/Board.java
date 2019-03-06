@@ -77,11 +77,6 @@ public class Board {
 
     }
 
-    // TODO: try to write this in a cleaner way
-
-    //private method for call playing square
-
-
     private boolean callPlayingSquare(char playerToken){
         if((character.get(0).get(0).equals(playerToken) && character.get(0).get(1).equals(playerToken) && character.get(0).get(2).equals(playerToken))
                 || (character.get(1).get(0).equals(playerToken) && character.get(1).get(1).equals(playerToken) && character.get(1).get(2).equals(playerToken))
