@@ -1,8 +1,6 @@
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
 
 public class GameTest {
 
@@ -49,7 +47,15 @@ public class GameTest {
 
     @Test
     public void whenPlayerForfeitsOtherPlayerWins() {
+        Game game = new Game();
+        game.setPlayerForfeitedGame(true);
+
+        Assert.assertTrue(game.hasEnded());
+        Assert.assertTrue(game.playerWins());
+
     }
+
+
 
     @Test
     public void whenPlayerGetsThreeInARowHorizontallyPlayerWins() {
