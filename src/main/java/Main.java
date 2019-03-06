@@ -6,17 +6,23 @@ public class Main {
         Game game = new Game();
         Scanner scanner = new Scanner(System.in);
         boolean playerOneTurn = true;
+        System.out.println("Welcome to Tic Tac Toe!\n");
+        System.out.println("Here's the current board\n");
+        System.out.println(game.showBoard());
         Character playerOneToken = 'X';
         Character playerTwoToken = 'O';
         while (!game.hasEnded()) {
             Character token = playerOneTurn ? playerOneToken : playerTwoToken;
+
             boolean turnPlayed = false;
             do {
-                System.out.println("Enter a coordinate x,y to place your " + (playerOneTurn ? "X" : "O" ) + " or enter 'q' to give up: ");
+
+                System.out.print("\nPlayer " + (playerOneTurn ? "1" : "2") + " enter a coordinate x,y to place your " + (playerOneTurn ? "X" : "O" ) + " or enter 'q' to give up: ");
                 String userInput  = scanner.next();
                 if(userInput.equalsIgnoreCase("q")){
+                    playerOneTurn = !playerOneTurn;
                     game.setPlayerForfeitedGame(true);
-                    System.out.println("Player " + (playerOneTurn ? "1" : "2") + " gives up.");
+                    System.out.println("Player " + (!playerOneTurn ? "1" : "2") + " gives up.");
                     break;
                 }
 
@@ -26,7 +32,10 @@ public class Main {
                 if (userToken.length != 2) {
                     continue;
                 }
-
+                if((Integer.parseInt(userToken[0]) < 1 || Integer.parseInt(userToken[0]) > 3) || (Integer.parseInt(userToken[1]) < 1 || Integer.parseInt(userToken[1]) > 3)) {
+                    System.out.println("Not a valid coordinate");
+                    continue;
+                }
                 int x = Integer.parseInt(userToken[0]);
                 int y = Integer.parseInt(userToken[1]);
 
@@ -39,7 +48,8 @@ public class Main {
             playerOneTurn = !playerOneTurn;
         }
         if (game.playerWins()) {
-            System.out.println("Player " + (!playerOneTurn ? "1" : "2") + " wins!");
+            playerOneTurn = !playerOneTurn;
+            System.out.println("Player " + (playerOneTurn ? "1" : "2") + " wins!");
         } else {
             System.out.println("Game ended in draw");
         }
