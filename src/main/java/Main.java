@@ -29,15 +29,21 @@ public class Main {
                 String[] userToken = userInput.split(",");
 
                 // TODO: input validation
-                if (userToken.length != 2) {
-                    continue;
+                int x = 0;
+                int y = 0;
+                for(String input : userToken){
+                    if(input.matches("[0-9]+")){
+                         x = Integer.parseInt(userToken[0]);
+                         y = Integer.parseInt(userToken[1]);
+                    } else continue;
                 }
-                if((Integer.parseInt(userToken[0]) < 1 || Integer.parseInt(userToken[0]) > 3) || (Integer.parseInt(userToken[1]) < 1 || Integer.parseInt(userToken[1]) > 3)) {
+
+                if( x < 1 || x > 3 || y  < 1 || y > 3) {
                     System.out.println("Not a valid coordinate");
                     continue;
                 }
-                int x = Integer.parseInt(userToken[0]);
-                int y = Integer.parseInt(userToken[1]);
+//                int x = Integer.parseInt(userToken[0]);
+//                int y = Integer.parseInt(userToken[1]);
 
                 turnPlayed = game.takeTurn(x, y, token);
                 if (!turnPlayed) {
