@@ -69,19 +69,52 @@ public class Board {
     }
 
     public boolean playerWins() {
-        if(checkHorizontally()){
+       if(checkHorizontally() || checkVertically() || checkDiagonallyBottomLeftToTopRight() || checkDiagonallyBottomRightTopLeft()){
+           return true;
+       }
+
+       return false;
+
+    }
+
+    public boolean checkHorizontally() {
+
+        if (character.get(0).get(0).equals('X') && character.get(0).get(1).equals('X') && character.get(0).get(2).equals('X') || character.get(0).get(0).equals('O') && character.get(0).get(1).equals('O') && character.get(0).get(2).equals('O')) {
+            return true;
+        } else if (character.get(1).get(0).equals('X') && character.get(1).get(1).equals('X') && character.get(1).get(2).equals('X') || character.get(1).get(0).equals('O') && character.get(1).get(1).equals('O') && character.get(1).get(2).equals('O')) {
+            return true;
+        } else if (character.get(2).get(0).equals('X') && character.get(2).get(1).equals('X') && character.get(2).get(2).equals('X') || character.get(2).get(0).equals('O') && character.get(2).get(1).equals('O') && character.get(2).get(2).equals('O')){
             return true;
         }
 
         return false;
     }
 
-    public boolean checkHorizontally(){
-        if(character.get(0).get(0).equals('X') && character.get(0).get(1).equals('X') && character.get(0).get(2).equals('X') || character.get(0).get(0).equals('O') && character.get(0).get(1).equals('O') && character.get(0).get(2).equals('O')){
+    public boolean checkVertically() {
+        if (character.get(0).get(0).equals('X') && character.get(1).get(0).equals('X') && character.get(2).get(0).equals('X') || character.get(0).get(0).equals('O') && character.get(1).get(0).equals('O') && character.get(2).get(0).equals('O')) {
+            return true;
+        }else if(character.get(0).get(1).equals('X') && character.get(1).get(1).equals('X') && character.get(2).get(1).equals('X') || character.get(0).get(1).equals('O') && character.get(1).get(1).equals('O') && character.get(2).get(1).equals('O') ) {
+            return true;
+        }else if (character.get(0).get(2).equals('X') && character.get(1).get(2).equals('X') && character.get(2).get(2).equals('X') || character.get(0).get(2).equals('O') && character.get(1).get(2).equals('O') && character.get(2).get(2).equals('O')){
             return true;
         }
         return false;
     }
+
+    public boolean checkDiagonallyBottomLeftToTopRight(){
+        if (character.get(2).get(0).equals('X') && character.get(1).get(1).equals('X') && character.get(0).get(2).equals('X') || character.get(2).get(0).equals('O') && character.get(1).get(1).equals('O') && character.get(0).get(2).equals('O')){
+            return true;
+        }
+        return false;
+    }
+     public boolean checkDiagonallyBottomRightTopLeft(){
+        if(character.get(2).get(2).equals('X') && character.get(1).get(1).equals('X') && character.get(0).get(0).equals('X') || character.get(2).get(2).equals('O') && character.get(1).get(1).equals('O') && character.get(0).get(0).equals('O')){
+            return true;
+        }
+        return false;
+     }
+
+
 
 
 
