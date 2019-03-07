@@ -5,7 +5,6 @@ public class Main {
     public static void main(String[] args) {
         Game game = new Game();
         Scanner scanner = new Scanner(System.in);
-        boolean playerOneTurn = true;
         System.out.println("Welcome to Tic Tac Toe!\n");
         System.out.println("Here's the current board\n");
         System.out.println(game.showBoard());

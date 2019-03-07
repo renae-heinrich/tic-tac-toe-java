@@ -1,3 +1,4 @@
+
 public class Game {
 
     private final Board board;
@@ -7,15 +8,15 @@ public class Game {
     private Player player1;
     private Player player2;
 
+
     int turnCount = 0;
 
 
     public Game(){
         board = new Board();
         playerForfeitedGame = false;
-         player1 = new Player("Player 1", 'X');
-         player2 = new Player("Player 2", 'O');
-
+        player1 = new Player("Player 1", 'X');
+        player2 = new Player("Player 2", 'O');
     }
 
     public Board getBoard(){
@@ -59,7 +60,24 @@ public class Game {
 
     }
 
-
-
+//    public boolean enumSwitch(GameState state){
+//        switch (state){
+//            case FORFEIT:
+//                System.out.println(getCurrentPlayer().getName() + " gives up.");
+//                turnCount++;
+//                return playerForfeitedGame = true;
+//            case WIN:
+//                return board.playerWins() || playerForfeitedGame;
+//            case DRAW:
+//                return board.playerWins() || playerForfeitedGame;
+//            case HAS_ENDED:
+//                return !board.inPlay() || board.playerWins() || playerForfeitedGame;
+//            default:
+//                return true;
+//            }
+//
+//
+//        }
+//    }
 
 }
