@@ -22,15 +22,17 @@ public class Game {
         return board;
     }
 
-    public void takeTurn(int x, int y, char playerToken) {
+    public boolean takeTurn(int x, int y, char playerToken) {
         boolean turn = board.setPosition(x,y,playerToken);
-        if(turn){
+        if(turn && !playerWins()){
             turnCount++;
         }
 
+        return turn;
     }
 
     public boolean forfeit(){
+        System.out.println(getCurrentPlayer().getName() + " gives up.");
         turnCount++;
         return playerForfeitedGame = true;
     }

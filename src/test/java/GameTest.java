@@ -116,6 +116,18 @@ public class GameTest {
     }
 
     @Test
+    public void whenPlayer1GetsThreeInARowHorizontallyPlayer1Wins() {
+        Game game = new Game();
+        game.takeTurn(1,1, 'X');
+        game.takeTurn(2,1, 'O');
+        game.takeTurn(1,2, 'X');
+        game.takeTurn(2,2, 'O');
+        game.takeTurn(1,3, 'X');
+
+        Assert.assertEquals(game.getCurrentPlayer().getName(), "Player 1");
+    }
+
+    @Test
     public void  whenPlayerGetsThreeInARowVerticallyPlayerWins() {
         Game game = new Game();
         game.takeTurn(1,1, 'X');
@@ -150,7 +162,7 @@ public class GameTest {
 
         Assert.assertTrue(game.hasEnded());
         Assert.assertTrue(game.playerWins());
-//        Assert.assertEquals(game.getCurrentPlayer().getName(), "Player 1");
+        Assert.assertEquals(game.getCurrentPlayer().getName(), "Player 1");
     }
 
     @Test
