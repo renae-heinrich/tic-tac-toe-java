@@ -32,11 +32,11 @@ public class Game {
         return turn;
     }
 
-    public boolean forfeit(){
-        System.out.println(getCurrentPlayer().getName() + " gives up.");
-        turnCount++;
-        return playerForfeitedGame = true;
-    }
+//    public boolean forfeit(){
+//        System.out.println(getCurrentPlayer().getName() + " gives up.");
+//        turnCount++;
+//        return playerForfeitedGame = true;
+//    }
 
     public boolean hasEnded() {
 
@@ -60,24 +60,23 @@ public class Game {
 
     }
 
-//    public boolean enumSwitch(GameState state){
-//        switch (state){
-//            case FORFEIT:
-//                System.out.println(getCurrentPlayer().getName() + " gives up.");
-//                turnCount++;
-//                return playerForfeitedGame = true;
-//            case WIN:
-//                return board.playerWins() || playerForfeitedGame;
-//            case DRAW:
-//                return board.playerWins() || playerForfeitedGame;
-//            case HAS_ENDED:
-//                return !board.inPlay() || board.playerWins() || playerForfeitedGame;
-//            default:
-//                return true;
-//            }
-//
-//
-//        }
-//    }
+    public void gameState(GameState state){
+        switch (state){
+            case FORFEIT:
+                System.out.println(getCurrentPlayer().getName() + " gives up.");
+                turnCount++;
+                playerForfeitedGame = true;
+            case WIN:
+                if (playerWins()) {
+                    System.out.println(getCurrentPlayer().getName() + " wins!");
+                } else {
+                    System.out.println("Game ended in draw");
+                }
+            case DRAW:
+                break;
+            case HAS_ENDED:
+                break;
+        }
+    }
 
 }

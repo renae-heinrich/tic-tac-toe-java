@@ -17,7 +17,7 @@ public class Main {
                 System.out.print(game.getCurrentPlayer().getName() + " enter a coordinate x,y to place your " + game.getCurrentPlayer().getToken() + " or enter 'q' to give up: ");
                 String userInput  = scanner.next();
                 if(userInput.equalsIgnoreCase("q")){
-                    game.forfeit();
+                    game.gameState(GameState.FORFEIT);
                     break;
                 }
 
@@ -42,11 +42,6 @@ public class Main {
             } while (!turnPlayed);
             System.out.println(game.showBoard());
         }
-        if (game.playerWins()) {
-
-            System.out.println(game.getCurrentPlayer().getName() + " wins!");
-        } else {
-            System.out.println("Game ended in draw");
-        }
+        game.gameState(GameState.WIN);
     }
 }
