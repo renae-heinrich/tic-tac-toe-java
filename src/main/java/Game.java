@@ -1,3 +1,4 @@
+import java.util.Scanner;
 
 public class Game {
 
@@ -12,20 +13,20 @@ public class Game {
     int turnCount = 0;
 
 
-    public Game(){
+    public Game() {
         board = new Board();
         playerForfeitedGame = false;
         player1 = new Player("Player 1", 'X');
         player2 = new Player("Player 2", 'O');
     }
 
-    public Board getBoard(){
+    public Board getBoard() {
         return board;
     }
 
     public boolean takeTurn(int x, int y, char playerToken) {
-        boolean turn = board.setPosition(x,y,playerToken);
-        if(turn && !playerWins()){
+        boolean turn = board.setPosition(x, y, playerToken);
+        if (turn && !playerWins()) {
             turnCount++;
         }
 
@@ -53,15 +54,15 @@ public class Game {
     }
 
     public Player getCurrentPlayer() {
-        if(turnCount % 2 == 0){
+        if (turnCount % 2 == 0) {
             return player1;
         }
         return player2;
 
     }
 
-    public void gameState(GameState state){
-        switch (state){
+    public void gameState(GameState state) {
+        switch (state) {
             case FORFEIT:
                 System.out.println(getCurrentPlayer().getName() + " gives up.");
                 turnCount++;
@@ -72,11 +73,7 @@ public class Game {
                 } else {
                     System.out.println("Game ended in draw");
                 }
-            case DRAW:
-                break;
-            case HAS_ENDED:
-                break;
+
         }
     }
-
 }
