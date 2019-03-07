@@ -1,4 +1,5 @@
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 
@@ -19,6 +20,17 @@ public class GameTest {
     }
 
     @Test
+    public void newGameHasCurrentPlayerSetTo1() {
+
+        //new game takes in board
+        //get board
+        //check empty
+        Game game1 = new Game();
+
+        Assert.assertEquals(game1.getCurrentPlayer().getName(), "Player 1");
+    }
+
+    @Test
     public void whenPlayer1PlacesXOnBoardShouldShowPieceOnBoard() {
 
         //new game
@@ -28,37 +40,64 @@ public class GameTest {
         String result = board.showBoard();
 
         Assert.assertEquals("X . .\n. . .\n. . .", result);
+    }
 
+
+    @Test
+    public void whenPlayer1PlacesXOnBoardShouldSwitchPlayer() {
+
+        //new game
+        Game game = new Game();
+        game.takeTurn(1, 1, 'X');
+
+        Assert.assertEquals(game.getCurrentPlayer().getName(), "Player 2");
     }
 
     @Test
-    public void whenPlayerTriesToPlacePieceOnOccupiedSpaceShouldThrowError() {
+    public void whenPlayer2TriesToPlacePieceOnOccupiedSpaceShouldThrowError() {
         Game game = new Game();
         game.takeTurn(1,1, 'X');
-        boolean turnResult = game.takeTurn(1,1, 'O');
-
-        Assert.assertFalse(turnResult);
+        game.takeTurn(1,1, 'O');
 
         Board board = game.getBoard();
         String result = board.showBoard();
 
         Assert.assertEquals("X . .\n. . .\n. . .", result);
-     }
+    }
 
     @Test
-    public void whenPlayerForfeitsOtherPlayerWins() {
+    public void whenPlayer2TriesToPlacePieceThatsOccupiedStillPlayerTwosTurn() {
         Game game = new Game();
-        game.setPlayerForfeitedGame(true);
+        game.takeTurn(1,1, 'X');
+        game.takeTurn(1,1, 'O');
+
+        Assert.assertEquals(game.getCurrentPlayer().getName(), "Player 2");
+    }
+
+
+    @Test
+    public void whenPlayer1ForfeitsOtherPlayerWins() {
+        Game game = new Game();
+        game.forfeit();
 
         Assert.assertTrue(game.hasEnded());
         Assert.assertTrue(game.playerWins());
+//        Assert.assertEquals(game.getCurrentPlayer().getName(), "Player 2");
+    }
 
+
+    @Test
+    public void whenPlayer1ForfeitsShouldSwitchPlayer() {
+        Game game = new Game();
+        game.forfeit();
+
+        Assert.assertEquals(game.getCurrentPlayer().getName(), "Player 2");
     }
 
 
 
     @Test
-    public void whenPlayerGetsThreeInARowHorizontallyPlayerWins() {
+    public void whenPlayer1GetsThreeInARowHorizontallyPlayerWins() {
         Game game = new Game();
         game.takeTurn(1,1, 'X');
         game.takeTurn(2,1, 'O');
@@ -73,6 +112,7 @@ public class GameTest {
 
         Assert.assertTrue(game.hasEnded());
         Assert.assertTrue(game.playerWins());
+//        Assert.assertEquals(game.getCurrentPlayer().getName(), "Player 1");
     }
 
     @Test
@@ -91,6 +131,7 @@ public class GameTest {
 
         Assert.assertTrue(game.hasEnded());
         Assert.assertTrue(game.playerWins());
+//        Assert.assertEquals(game.getCurrentPlayer().getName(), "Player 1");
     }
 
     @Test
@@ -109,6 +150,7 @@ public class GameTest {
 
         Assert.assertTrue(game.hasEnded());
         Assert.assertTrue(game.playerWins());
+//        Assert.assertEquals(game.getCurrentPlayer().getName(), "Player 1");
     }
 
     @Test
@@ -127,6 +169,7 @@ public class GameTest {
 
         Assert.assertTrue(game.hasEnded());
         Assert.assertTrue(game.playerWins());
+//        Assert.assertEquals(game.getCurrentPlayer().getName(), "Player 1");
     }
 
     @Test

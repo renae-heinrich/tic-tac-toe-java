@@ -4,21 +4,35 @@ public class Game {
 
     private boolean playerForfeitedGame;
 
+    private Player player1;
+    private Player player2;
+
+    int turnCount = 0;
+
 
     public Game(){
         board = new Board();
         playerForfeitedGame = false;
-    }
-    public void setPlayerForfeitedGame(boolean playerForfeitedGame) {
-        this.playerForfeitedGame = playerForfeitedGame;
+         player1 = new Player("Player 1", 'X');
+         player2 = new Player("Player 2", 'O');
+
     }
 
     public Board getBoard(){
         return board;
     }
 
-    public boolean takeTurn(int x, int y, char playerToken) {
-        return board.setPosition(x, y, playerToken);
+    public void takeTurn(int x, int y, char playerToken) {
+        boolean turn = board.setPosition(x,y,playerToken);
+        if(turn){
+            turnCount++;
+        }
+
+    }
+
+    public boolean forfeit(){
+        turnCount++;
+        return playerForfeitedGame = true;
     }
 
     public boolean hasEnded() {
@@ -34,5 +48,16 @@ public class Game {
     public String showBoard() {
         return board.showBoard();
     }
+
+    public Player getCurrentPlayer() {
+        if(turnCount % 2 == 0){
+            return player1;
+        }
+        return player2;
+
+    }
+
+
+
 
 }
