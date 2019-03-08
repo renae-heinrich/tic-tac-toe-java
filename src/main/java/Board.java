@@ -49,7 +49,6 @@ public class Board {
         int col = x - 1;
 
         if (character.get(row).get(col).equals('.')) {
-            // do I want to do this action here, then return true?? or just return true?
             character.get(row).set(col, playerToken);
             return true;
         } else {

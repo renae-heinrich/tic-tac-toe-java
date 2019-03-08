@@ -5,19 +5,19 @@ public class Main {
     public static void main(String[] args) {
         Game game = new Game();
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Welcome to Tic Tac Toe!\n");
-        System.out.println("Here's the current board\n");
-        System.out.println(game.showBoard());
+
+        game.gameState(GameState.START);
+
         while (!game.hasEnded()) {
 
 
             boolean turnPlayed = false;
             do {
-
-                System.out.print(game.getCurrentPlayer().getName() + " enter a coordinate x,y to place your " + game.getCurrentPlayer().getToken() + " or enter 'q' to give up: ");
+                game.gameState(GameState.INSTRUCT);
                 String userInput  = scanner.next();
                 if(userInput.equalsIgnoreCase("q")){
                     game.gameState(GameState.FORFEIT);
+
                     break;
                 }
 
@@ -31,17 +31,17 @@ public class Main {
                 }
 
                 if (x < 1 || x > 3 || y < 1 || y > 3) {
-                    System.out.println("Not a valid coordinate");
+                   game.gameState(GameState.INVALID_POSITION);
                     continue;
                 }
 
                 turnPlayed = game.takeTurn(x, y, game.getCurrentPlayer().getToken());
                 if (!turnPlayed) {
-                    System.out.println("Position occupied");
+                    game.gameState(GameState.POSITION_OCCUPIED);
                 }
             } while (!turnPlayed);
-            System.out.println(game.showBoard());
+            game.gameState(GameState.SHOW_BOARD);
         }
-        game.gameState(GameState.WIN);
+        game.gameState(GameState.WIN_DRAW);
     }
 }

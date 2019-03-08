@@ -33,11 +33,11 @@ public class Game {
         return turn;
     }
 
-//    public boolean forfeit(){
-//        System.out.println(getCurrentPlayer().getName() + " gives up.");
-//        turnCount++;
-//        return playerForfeitedGame = true;
-//    }
+    public boolean forfeit(){
+        System.out.println(getCurrentPlayer().getName() + " gives up.");
+        turnCount++;
+        return playerForfeitedGame = true;
+    }
 
     public boolean hasEnded() {
 
@@ -67,13 +67,31 @@ public class Game {
                 System.out.println(getCurrentPlayer().getName() + " gives up.");
                 turnCount++;
                 playerForfeitedGame = true;
-            case WIN:
+                break;
+            case WIN_DRAW:
                 if (playerWins()) {
                     System.out.println(getCurrentPlayer().getName() + " wins!");
                 } else {
                     System.out.println("Game ended in draw");
                 }
-
+                break;
+            case START:
+                System.out.println("Welcome to Tic Tac Toe!\n");
+                System.out.println("Here's the current board\n");
+                System.out.println(showBoard() + "\n");
+                break;
+            case POSITION_OCCUPIED:
+                System.out.println("Position occupied");
+                break;
+            case INVALID_POSITION:
+                System.out.println("Not a valid coordinate");
+                break;
+            case SHOW_BOARD:
+                System.out.println(showBoard());
+                break;
+            case INSTRUCT:
+                System.out.print(getCurrentPlayer().getName() + " enter a coordinate x,y to place your " + getCurrentPlayer().getToken() + " or enter 'q' to give up: ");
+                break;
         }
     }
 }
