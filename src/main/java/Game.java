@@ -25,14 +25,21 @@ public class Game {
     }
 
     public boolean takeTurn(int x, int y, char playerToken) {
+        if (x < 1 || x > 3 || y < 1 || y > 3) {
 
-            boolean turn = board.setPosition(x, y, playerToken);
-            if (turn && !playerWins()) {
-                turnCount++;
+
+            gameState(GameState.INVALID_POSITION);
+            return false;}
+
+        boolean turn = board.setPosition(x, y, playerToken);
+        if (turn && !playerWins()) {
+            turnCount++;
             }
 
             return turn;
         }
+
+
 
 
     public boolean forfeit(){

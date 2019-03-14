@@ -21,19 +21,17 @@ public class Main {
                     break;
                 }
 
-                String[] userToken = userInput.split(",");
+                String[] coordinates = userInput.split(",");
 
                 int x = 0;
                 int y = 0;
-                if (userToken[0].matches("[0-9]+") && userToken[1].matches("[0-9]+")){
-                    x = Integer.parseInt(userToken[0]);
-                    y = Integer.parseInt(userToken[1]);
+                if (coordinates[0].matches("[0-9]+") && coordinates[1].matches("[0-9]+")){
+                    x = Integer.parseInt(coordinates[0]);
+                    y = Integer.parseInt(coordinates[1]);
                 }
 
-//                if (x < 1 || x > 3 || y < 1 || y > 3) {
-//                   game.gameState(GameState.INVALID_POSITION);
-//                    continue;
-//                }
+
+//                if (checkBoundary(game, x, y)) continue;
 
                 turnPlayed = game.takeTurn(x, y, game.getCurrentPlayer().getToken());
                 if (!turnPlayed) {
@@ -44,4 +42,12 @@ public class Main {
         }
         game.gameState(GameState.WIN_DRAW);
     }
+//
+//    private static boolean checkBoundary(Game game, int x, int y) {
+//        if (x < 1 || x > 3 || y < 1 || y > 3) {
+//           game.gameState(GameState.INVALID_POSITION);
+//            return true;
+//        }
+//        return false;
+//    }
 }
