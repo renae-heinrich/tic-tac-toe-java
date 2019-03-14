@@ -133,7 +133,10 @@ public class GameTest {
         game.takeTurn(2,2, 'O');
         game.takeTurn(1,3, 'X');
 
-        Assert.assertEquals(game.getCurrentPlayer().getName(), "Player 1");
+        Assert.assertTrue(game.hasEnded());
+        Assert.assertTrue(game.playerWins());
+
+//        Assert.assertEquals(game.getCurrentPlayer().getName(), "Player 1");
     }
 
     @Test

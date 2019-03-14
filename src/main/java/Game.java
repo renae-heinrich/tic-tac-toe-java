@@ -28,7 +28,6 @@ public class Game {
         if (x < 1 || x > 3 || y < 1 || y > 3) {
             gameState(GameState.INVALID_POSITION);
             return true;
-
         }
 
         boolean turn = board.setPosition(x, y, playerToken);
@@ -38,8 +37,6 @@ public class Game {
 
             return turn;
         }
-
-
 
 
     public boolean forfeit(){

@@ -11,7 +11,7 @@ public class Main {
         while (!game.hasEnded()) {
 
 
-            boolean turnPlayed = false;
+            boolean turnPlayed;
             do {
                 game.gameState(GameState.INSTRUCT);
                 String userInput  = scanner.next();
