@@ -30,11 +30,6 @@ public class Main {
                     y = Integer.parseInt(userToken[1]);
                 }
 
-                if (x < 1 || x > 3 || y < 1 || y > 3) {
-                   game.gameState(GameState.INVALID_POSITION);
-                    continue;
-                }
-
                 turnPlayed = game.takeTurn(x, y, game.getCurrentPlayer().getToken());
                 if (!turnPlayed) {
                     game.gameState(GameState.POSITION_OCCUPIED);

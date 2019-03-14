@@ -25,6 +25,11 @@ public class Game {
     }
 
     public boolean takeTurn(int x, int y, char playerToken) {
+
+        if (x < 1 || x > 3 || y < 1 || y > 3) {
+            gameState(GameState.INVALID_POSITION);
+        }
+
         boolean turn = board.setPosition(x, y, playerToken);
         if (turn && !playerWins()) {
             turnCount++;
@@ -60,6 +65,10 @@ public class Game {
         return player2;
 
     }
+
+
+    // Main query the Game, instead of the Game query the Main. Switch responsibilities.
+
 
     public void gameState(GameState state) {
         switch (state) {
