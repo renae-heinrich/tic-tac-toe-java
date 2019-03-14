@@ -94,7 +94,16 @@ public class GameTest {
         Assert.assertEquals(game.getCurrentPlayer().getName(), "Player 2");
     }
 
+    @Test
+    public void playerCoordinatesEnteredOutOfBounds() {
+        Game game = new Game();
+        game.takeTurn(5,7, 'X');
 
+        Board board = game.getBoard();
+        String result = board.showBoard();
+
+        Assert.assertEquals(". . .\n. . .\n. . .", result);
+    }
 
     @Test
     public void whenPlayer1GetsThreeInARowHorizontallyPlayerWins() {
