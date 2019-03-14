@@ -26,10 +26,10 @@ public class Game {
 
     public boolean takeTurn(int x, int y, char playerToken) {
         if (x < 1 || x > 3 || y < 1 || y > 3) {
-
-
             gameState(GameState.INVALID_POSITION);
-            return false;}
+            return true;
+
+        }
 
         boolean turn = board.setPosition(x, y, playerToken);
         if (turn && !playerWins()) {

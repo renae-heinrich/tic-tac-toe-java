@@ -30,9 +30,6 @@ public class Main {
                     y = Integer.parseInt(coordinates[1]);
                 }
 
-
-//                if (checkBoundary(game, x, y)) continue;
-
                 turnPlayed = game.takeTurn(x, y, game.getCurrentPlayer().getToken());
                 if (!turnPlayed) {
                     game.gameState(GameState.POSITION_OCCUPIED);
@@ -42,12 +39,5 @@ public class Main {
         }
         game.gameState(GameState.WIN_DRAW);
     }
-//
-//    private static boolean checkBoundary(Game game, int x, int y) {
-//        if (x < 1 || x > 3 || y < 1 || y > 3) {
-//           game.gameState(GameState.INVALID_POSITION);
-//            return true;
-//        }
-//        return false;
-//    }
+
 }
