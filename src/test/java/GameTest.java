@@ -40,6 +40,7 @@ public class GameTest {
         String result = board.showBoard();
 
         Assert.assertEquals("X . .\n. . .\n. . .", result);
+        Assert.assertEquals(game1.getState(), GameState.CONTINUE);
     }
 
 
@@ -63,6 +64,7 @@ public class GameTest {
         String result = board.showBoard();
 
         Assert.assertEquals("X . .\n. . .\n. . .", result);
+        Assert.assertEquals(game1.getState(), GameState.INVALID_POSITION);
     }
 
     @Test
@@ -83,6 +85,8 @@ public class GameTest {
         Assert.assertTrue(game.hasEnded());
         Assert.assertTrue(game.playerWins());
 //        Assert.assertEquals(game.getCurrentPlayer().getName(), "Player 2");
+
+        Assert.assertEquals(game1.getState(), GameState.FORFEIT);
     }
 
 
@@ -119,8 +123,10 @@ public class GameTest {
 //
 //        Assert.assertEquals("X X X\nO O .\n. . .", result);
 
-        Assert.assertTrue(game.hasEnded());
-        Assert.assertTrue(game.playerWins());
+//        Assert.assertTrue(game.hasEnded());
+//        Assert.assertTrue(game.playerWins());
+        Assert.assertEquals(game1.getState(), GameState.WIN);
+
 //        Assert.assertEquals(game.getCurrentPlayer().getName(), "Player 1");
     }
 
@@ -135,6 +141,8 @@ public class GameTest {
 
         Assert.assertTrue(game.hasEnded());
         Assert.assertTrue(game.playerWins());
+        Assert.assertEquals(game1.getState(), GameState.WIN);
+
 
 //        Assert.assertEquals(game.getCurrentPlayer().getName(), "Player 1");
     }
@@ -155,6 +163,8 @@ public class GameTest {
 
         Assert.assertTrue(game.hasEnded());
         Assert.assertTrue(game.playerWins());
+        Assert.assertEquals(game1.getState(), GameState.WIN);
+
 //        Assert.assertEquals(game.getCurrentPlayer().getName(), "Player 1");
     }
 
@@ -174,6 +184,8 @@ public class GameTest {
 
         Assert.assertTrue(game.hasEnded());
         Assert.assertTrue(game.playerWins());
+        Assert.assertEquals(game1.getState(), GameState.WIN);
+
         Assert.assertEquals(game.getCurrentPlayer().getName(), "Player 1");
     }
 
@@ -216,6 +228,8 @@ public class GameTest {
 
         Assert.assertTrue(game.hasEnded());
         Assert.assertFalse(game.playerWins());
+        Assert.assertEquals(game1.getState(), GameState.DRAW);
+
     }
 
 }

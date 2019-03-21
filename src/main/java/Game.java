@@ -67,7 +67,11 @@ public class Game {
 
     }
 
-
+    public GameState getGameState(){
+        if(forfeit()){
+            return GameState.FORFEIT;
+        } return GameState.CONTINUE;
+    }
     // Main query the Game, instead of the Game query the Main. Switch responsibilities.
 
 
